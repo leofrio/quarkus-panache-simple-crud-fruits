@@ -1,0 +1,20 @@
+version: "3.9"
+services:
+  postgres:
+    image: postgres
+    container_name: code_with-quarkus
+    environment:
+      POSTGRES_USER: leonardogaspar
+      POSTGRES_PASSWORD: mysecretpassword
+      POSTGRES_DB: quarkus
+      PGDATA: /data/postgres
+    volumes:
+      - /home/951549924@adm.unifor.br/Documentos/code-with-quarkus/src/main/resources/volume-docker:/data/postgres
+    ports:
+      - "8001:5432"
+    networks:
+      - postgres
+    restart: unless-stopped
+networks:
+  postgres:
+    driver: bridge
